@@ -13,11 +13,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
 
-import java.util.Iterator;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.Iterator;
 
 /**
  *
@@ -28,7 +24,7 @@ public class ExcelMarkdown {
     
     private static final String FILE_NAME = "/Users/azmir/Desktop/listName.xlsx";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         Writer writer = null;
         boolean line = true;
@@ -45,9 +41,6 @@ public class ExcelMarkdown {
             File file = new File("/Users/azmir/Desktop/listName.md");
             writer = new BufferedWriter(new FileWriter(file));
                
-            
-          
-
             while (iterator.hasNext()) {
 
                 Row currentRow = iterator.next();
@@ -85,7 +78,13 @@ public class ExcelMarkdown {
             }             
         } catch (IOException e) {                 
             e.printStackTrace();             
-        }         
+        }
+        
+        gitPushWiki wiki = new gitPushWiki();
+        wiki.runTerminal();
+   
+        gitPushCode code = new gitPushCode();
+        code.runTerminal();
         
     }
 
